@@ -1,17 +1,15 @@
 <?php
 class Geometry {
-    public static function areaOfCircle(int $radius):float{
+    public function areaOfCircle(int $radius):float{
         return pi() * $radius * $radius;
     }
-    public static function areaOfRectangle(int $length, int $width):int{
+    public function areaOfRectangle(int $length, int $width):int{
         return $length * $width;
     }
-    public static function areaOfTriangle(int $base,int $height):int{
+    public function areaOfTriangle(int $base,int $height):int{
         return $base * $height * 0.5;
     }
 }
-
-if()
 
 echo "Geometry Calculator\n";
 echo "1. Calculate the Area of a Circle\n";
