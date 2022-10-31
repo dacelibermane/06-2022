@@ -1,63 +1,41 @@
 <?php
 
-function createEmployees(string $name, float $base, int $hours):stdClass
-{
-    $employee = new stdClass();
-    $employee->name = $name;
-    $employee->base = $base;
-    $employee->hours = $hours;
-    return $employee;
-}
-
-$employees = [
-    createEmployees('Jim', 7.50, 35),
-    createEmployees('Michael', 8.20, 47),
-    createEmployees('Linda', 10.00, 73),
-];
 
 
+class Employee{
+    public string $name;
+    public float $base;
+    public int $hours;
 
-function employeeData(array $employees){
-    foreach ($employees as $employee){
-        return salary($employee->name, $employee->base, $employee->hours);
-    }
-}
-
-function salary(string $name, float $basePay,int $hoursWorked):string{
-    $maxHours = 60;
-    $minimumWage = 8.00;
-    $totalSalary = 0;
-    if(($basePay < $minimumWage) || ($hoursWorked > $maxHours)){
-        echo "Error!";
-    }else{
-        if($hoursWorked > 40){
-          $totalSalary =  $basePay * 40 + 1.5* $basePay *($hoursWorked - 40);
-
-        }else{
-           $totalSalary = $basePay * $hoursWorked;
+    public function __construct($name,$base,$hours){
+            $this->name = $name;
+            $this->base = $base;
+            $this->hours = $hours;
         }
-    }
-    return "$name your total salary is $totalSalary.";
-};
 
-employeeData($employees);
+        public function calculateSalary($name,$base,$hours):string{
+            $this->name = $name;
+            $this->base = $base;
+            $this->hours = $hours;
+            $minimumWage = 8.00;
+            $maxHours = 60;
+            $totalSalary = 0;
+            if(($base < $minimumWage) || ($hours > $maxHours)){
+                echo "Error!";
+            }else{
+                if($hours > 40){
+                  $totalSalary =  $base * 40 + 1.5* $base *($hours - 40);
 
-//$employee1 = new stdClass();
-//$employee1 ->base = 7.5;
-//$employee1 ->hours = 35;
-//
-//$employee2 = new stdClass();
-//$employee2->base = 8.20;
-//$employee2->hours = 47;
-//
-//$employee3 = new stdClass();
-//$employee3->base = 10.00;
-//$employee3->hours= 73;
+                }else{
+                   $totalSalary = $base * $hours;
+                }
+            }
+            return "$name your total salary is $totalSalary.";
+            }
+}
+
+$employee1 = new Employee('Jim', 7.50, 35);
+$employee2 = new Employee('Michael', 8.20, 47);
+$employee3 = new Employee('Linda', 10.00, 73);
 
 
-//
-////    $employee->base = $base;
-////    $employee->hours = $hours;
-////    return $employee;
-//$employees = new $employees();
-//$employees->salary($stdObject);

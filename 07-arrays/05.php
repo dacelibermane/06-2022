@@ -13,13 +13,14 @@ function display_board($cells)
 {
     foreach($cells as $cell){
         foreach($cell as $key =>$item){
-            echo " $item |";
+            echo " $key |";
         }
        echo "\n";
        echo "---+---+---\n";
     }
-    if()
 }
 
+$userX = readline("'X', choose your location (row, column): ");
+if()
 
 display_board($cells);
