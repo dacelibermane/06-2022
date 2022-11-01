@@ -13,7 +13,6 @@ for($i = 0; $i < count($numbers); $i++){
 }
 
 array_pop($numbers);
-//array_push($numbers, -7);
 $numbers[] = -7;
 
 for($i = 0; $i < count($numbers); $i++){
