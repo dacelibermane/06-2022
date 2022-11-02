@@ -3,9 +3,12 @@
 $firstNum = readline("Enter first number: ");
 $secondNum = readline("Enter the second number: ");
 
-function fifteen(int $num1, int $num2):bool{
+function fifteen(int $num1, int $num2):string{
 
-    return $num1 === 15 || $num2 === 15 || $num1 + $num2 === 15 || ($num1 - $num2) === 15;
+   if ($num1 === 15 || $num2 === 15 || $num1 + $num2 === 15 || ($num1 - $num2) === 15){
+       return 'true';
+   }
+   return 'false';
 
 }
 
