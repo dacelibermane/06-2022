@@ -7,7 +7,6 @@ class Employee
     public int $hoursWorked;
     public float $minimumWage = 8.00;
     public int $maxHours = 60;
-    public float $totalSalary = 0.00;
 
 
     public function __construct($base, $hours)
