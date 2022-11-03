@@ -1,28 +1,22 @@
 <?php
 
-class Geometry
+
+function areaOfCircle(int $radius): float
 {
-
-    public function areaOfCircle(int $radius): string
-    {
-
-        return $radius < 0 ? 'Error!' : round((pi() * $radius * $radius), 2);
-
-    }
-
-    public function areaOfRectangle(int $length, int $width): string
-    {
-        return $length < 0 || $width < 0 ? 'Error!' : $length * $width;
-    }
-
-    public function areaOfTriangle(int $base, int $height): string
-    {
-        return $base < 0 ? 'Error!' : $base * $height * 0.5;
-    }
-
+    return $radius < 0 ? 'Error!' : pi() * $radius * $radius;
 }
 
-function getMenu()
+function areaOfRectangle(int $length, int $width): int
+{
+    return $length < 0 || $width < 0 ? 'Error!' : $length * $width;
+}
+
+function areaOfTriangle(int $base, int $height, float $coef = 0.5): float
+{
+    return $base < 0 ? 'Error!' : $base * $height * $coef;
+}
+
+function getMenu(): int
 {
     echo PHP_EOL;
     echo "Geometry Calculator\n";
@@ -39,29 +33,25 @@ function getMenu()
     return $userInput;
 }
 
-
-do {
-    $userChoice = (int)getMenu();
-
+$userChoice = getMenu();
+while ($userChoice !== 4) {
     if ($userChoice === 1) {
-        $geometry = new Geometry();
         $userRadius = (int)readline("Enter the radius: ");
-        echo "The circle's area is " . $geometry->areaOfCircle($userRadius);
+        echo "The circle's area is " . areaOfCircle($userRadius) . ".";
         echo PHP_EOL;
     } elseif ($userChoice === 2) {
-        $geometry = new Geometry();
         $userLength = (int)readline("Enter the length: ");
         $userWidth = (int)readline("Enter the width: ");
-        echo "The rectangle's area is " . $geometry->areaOfRectangle($userLength, $userWidth);
+        echo "The rectangle's area is " . areaOfRectangle($userLength, $userWidth) . ".";
         echo PHP_EOL;
     } elseif ($userChoice === 3) {
-        $geometry = new Geometry();
         $userBase = (int)readline("Enter the base: ");
         $userHeight = (int)readline("Enter the height: ");
-        echo "The triangle's area is " . $geometry->areaOfTriangle($userBase, $userHeight);
+        echo "The triangle's area is " . areaOfTriangle($userBase, $userHeight) . ".";
         echo PHP_EOL;
     } else {
         echo "See you next time!";
     }
-
-} while ($userChoice !== 4);
+    getMenu();
+}
+getMenu();
